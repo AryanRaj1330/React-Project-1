@@ -1,11 +1,12 @@
 import React from "react"
+import Quiz from "./components/quiz/quiz"
 
-const app=()=>{
+const App=()=>{
   return(
     <div>
-
+      <Quiz/>
     </div>
   )
 }
 
-export default app
+export default App
