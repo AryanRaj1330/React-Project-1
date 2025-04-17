@@ -3,9 +3,9 @@ import Quiz from "./components/quiz/quiz"
 
 const App=()=>{
   return(
-    <div>
+    <>
       <Quiz/>
-    </div>
+    </>
   )
 }
 
