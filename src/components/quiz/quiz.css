@@ -31,104 +31,148 @@ body{
 }
    */
 
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #c850c0, #ffcc70);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .options{
-    padding:10px;
-    border:1px solid #ccc;
-    margin:5px;
+   body {
+    margin:0;
+    padding:0;
+    height:100vh;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:linear-gradient(135deg, #c850c0, #ffcc70);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#container {
+    background:white;
+    padding:40px 30px;
+    border-radius:20px;
+    width:450px;
+    box-shadow:0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+h2{
+    font-size:24px;
+    color:#a349a4;
+    margin-bottom:20px;
+}
+
+form{
+    width:100%;
+}
+
+label{
+    font-size:16px;
+    color:#333;
+    display:block;
+    margin-bottom:10px;
+    text-align:left;
+    margin-left:10px;
+}
+
+input[type="number"],
+select{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:2px solid #ccc;
+    border-radius:8px;
+    box-sizing:border-box;
+    font-size:16px;
+}
+
+input[type="number"]:focus,
+select:focus{
+    border-color:#a349a4;
+    outline:none;
+}
+
+button{
+    padding:12px 24px;
+    background-color:#a349a4;
+    color:white;
+    font-size:16px;
+    border:none;
+    border-radius:8px;
     cursor:pointer;
-    border-radius:5px;
-    transition:0.3s ease;
-  }
-  
-  .options:hover{
+    transition:background-color 0.3s ease;
+    width:100%;
+    margin-top:20px;
+}
+
+button:hover{
+    background-color:#9c2f9e;
+}
+
+button:disabled{
+    background-color:#ccc;
+    cursor:not-allowed;
+}
+
+select, input{
+    border-radius:8px;
+}
+
+form div{
+    margin-bottom:20px;
+}
+
+#option-container{
+    margin-top:20px;
+    width:100%; 
+}
+
+#option-container ul{
+    padding:0;
+    list-style-type:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+#option-container li{
+    padding:12px;
+    border:2px solid #ccc;
+    border-radius:8px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    background-color:white;
+    text-align:left;
+    font-size:16px;
+    width:100%; 
+    box-sizing:border-box;
+}
+
+#option-container li:hover{
     background-color:#f0f0f0;
-  }
-  
-  .options.correct{
-    background-color:#b6fcb6; /* light green */
-    border-color:#4caf50;
-    color:black;
-  }
-  
-  .options.incorrect{
-    background-color:#fcb6b6; /* light red */
+}
+
+#option-container li.correct{
+    background-color:#4CAF50; 
+    color:white;
+    border-color:#4CAF50;
+}
+
+#option-container li.incorrect{
+    background-color:#f44336;
+    color:white;
     border-color:#f44336;
-    color:black;
-  }
-  
+}
 
-  #container {
-    background: white;
-    padding: 40px 30px;
-    border-radius: 20px;
-    width: 400px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  #container > div:first-child {
-    font-size: 22px;
-    font-weight: bold;
-    color: #a349a4;
-    margin-bottom: 10px;
-  }
-  
-  #question h2 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 25px;
-    text-align:left;
-  }
-  
-  #option-container ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 30px;
-  }
-  
-  #track{
-    text-align:left;
-  }
+#option-container li.selected{
+    background-color:#ddd; 
+}
 
-  .options {
-    background-color: #f9f2fd;
-    padding: 12px 16px;
-    margin: 10px 0;
-    border-radius: 12px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align:left;
-  }
-  
-  .options:hover {
-    border-color: #d494f3;
-    background-color: #fce9ff;
-  }
-  
-  button {
-    background: linear-gradient(to right, #c850c0, #ffcc70);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  button:hover {
-    transform: scale(1.05);
-  }
-  
+#option-container li.selected.correct{
+    background-color:#4CAF50; 
+}
+
+#option-container li.selected.incorrect{
+    background-color:#f44336; 
+}
+
+

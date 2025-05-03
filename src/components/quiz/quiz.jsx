@@ -15,6 +15,7 @@ const Quiz=()=>{
     const[isCorrect,setIsCorrect]= useState(null)
     const[score,setScore]= useState(0)
     const[quizCompleted,setQuizCompleted]= useState(false)
+    const[shuffledState,setShuffledState]= useState([])
 
     useEffect(()=>{
         if(!setting) return
@@ -39,6 +40,13 @@ const Quiz=()=>{
         
         quizData()
     },[setting])
+
+    useEffect(()=>{
+      if(questions.length>0){
+        const options=[...questions[questionIndex].incorrect_answers,questions[questionIndex].correct_answer]
+        setShuffledState(options.sort(()=>Math.random()-0.5))
+      }
+    },[questionIndex,questions])
 
     const optionSelected=(option)=>{
         setSelectedOption(option)
@@ -191,31 +199,29 @@ const Quiz=()=>{
               }}
             />
           </div>
-          <div id="option-container">
-            <ul>
-              {[...questions[questionIndex].incorrect_answers, questions[questionIndex].correct_answer]
-                .sort(() => Math.random() - 0.5)
-                .map((option, idx) => {
-                  let className = "options";
-                  if (selectedOption) {
-                    if (option === selectedOption) {
-                      className +=
-                        option === questions[questionIndex].correct_answer
-                          ? " correct"
-                          : " incorrect";
-                    }
-                  }
-                  return (
-                    <li
-                      key={idx}
-                      className={className}
-                      dangerouslySetInnerHTML={{ __html: option }}
-                      onClick={() => optionSelected(option)}
-                    />
-                  );
-                })}
-            </ul>
-          </div>
+      <div id="option-container">
+        <ul>
+        {shuffledState.map((option,idx)=>{
+          let className="options"
+          if(selectedOption){
+            if(option===questions[questionIndex].correct_answer){
+            className+=" correct"
+          }
+          else if(option===selectedOption){
+            className+=" incorrect"
+          }
+        }
+        return (
+          <li
+            key={idx}
+            className={className}
+            dangerouslySetInnerHTML={{ __html: option }}
+            onClick={() => !selectedOption&&optionSelected(option)}
+          />
+        );
+      })}
+    </ul>
+  </div>
           <button onClick={nextButton} disabled={!selectedOption}>
             Next
           </button>
