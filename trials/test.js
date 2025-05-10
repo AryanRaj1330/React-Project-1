@@ -7,7 +7,7 @@ async function quizData(){
             })
         })
         const data= await response.json()
-        console.log(data.results[0])
+        console.log(data.results[0].question)
     }
     catch(error){
         console.log(`error=${error}`)
