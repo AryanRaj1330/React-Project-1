@@ -193,11 +193,7 @@ const Quiz=()=>{
         <>
           <div id="track">{questionIndex + 1}/{questions.length}</div>
           <div id="question">
-            <h2
-              dangerouslySetInnerHTML={{
-                __html: questions[questionIndex].question,
-              }}
-            />
+            <h2>{questions[questionIndex].question}</h2>
           </div>
       <div id="option-container">
         <ul>
@@ -215,9 +211,8 @@ const Quiz=()=>{
           <li
             key={idx}
             className={className}
-            dangerouslySetInnerHTML={{ __html: option }}
             onClick={() => !selectedOption&&optionSelected(option)}
-          />
+          >{option}</li>
         );
       })}
     </ul>
