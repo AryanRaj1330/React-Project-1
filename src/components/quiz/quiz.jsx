@@ -51,7 +51,7 @@ const Quiz=()=>{
     const optionSelected=(option)=>{
         setSelectedOption(option)
         setIsCorrect(option===questions[questionIndex].correct_answer)
-        if(option===questions[questionIndex].correct_answer){
+        if(isCorrect){
             setScore(prev=>prev+1)
         }
     }
